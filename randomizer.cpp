@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const char filename[] = "UnsortedArr.txt";
+const char filename[] = "assets/UnsortedArr.txt";
 
 int main(){
     long int range_min, range_max, volume;

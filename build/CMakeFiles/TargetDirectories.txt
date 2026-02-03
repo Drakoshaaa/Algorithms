@@ -1,0 +1,3 @@
+/home/drakoshaaa/Coding/C--/Algorithms/build/CMakeFiles/Algorithms.dir
+/home/drakoshaaa/Coding/C--/Algorithms/build/CMakeFiles/edit_cache.dir
+/home/drakoshaaa/Coding/C--/Algorithms/build/CMakeFiles/rebuild_cache.dir

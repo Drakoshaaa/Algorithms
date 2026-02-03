@@ -1,0 +1,1 @@
+void binaryInsertionSort(unsigned size, int* arr);
