@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <chrono>
 #include <fmt/core.h>
 #include <fmt/color.h>
 
@@ -19,7 +20,6 @@ const char Sarr[] = "assets/SortedArr.txt";
 #include "shakerSort.h"
 
 #include "randomizer.h"
-#include "progress_bar.h"
 
 unsigned Size_calc(ifstream*);
 void Arr_in(ifstream*, unsigned, int*);
@@ -112,6 +112,10 @@ int main() {
     filein.close();
     filein_bs.close();
 
+    // Начала отсчёта интервала времени
+    auto start = chrono::steady_clock::now();
+
+    // Запуск выбранного пользователем алгоритма
     switch (alg){
         case 1:
         selectionSortMax(size, arr);
@@ -142,7 +146,11 @@ int main() {
         break;
     }
     
+    // Конец отсчёта интервала времени и вычисление разницы
+    auto end = chrono::steady_clock::now();
+    chrono::duration<double> diff = end - start;
     
+    // Заверешающий вывод работы программы
     if (alg > 7){
         if (result != -1){
             cout << "Элемент (" << target << ") найден под индексом " << result << ".\n";
@@ -153,7 +161,7 @@ int main() {
     else {
         fileout.open(Sarr);
         printArr(&fileout, arr, size);
-        cout << "\rСортировка завершена.       \n";
+        cout << "\rСортировка была завершена за " << diff.count() << " секунд\n";
     }
 
     cout << "\n-------------------------------------------------------------------------\n";
