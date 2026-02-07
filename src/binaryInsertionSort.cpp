@@ -1,3 +1,5 @@
+#include "progress_bar.h"
+
 void binaryInsertionSort(unsigned size, int* arr){
     for (int i = 1; i < size; i++){
         int key = arr[i];
@@ -19,5 +21,8 @@ void binaryInsertionSort(unsigned size, int* arr){
         }
 
         arr[left] = key;
+
+        //progress bar
+        progress_bar(size, i);
     }
 }

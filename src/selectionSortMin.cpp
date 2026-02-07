@@ -1,7 +1,9 @@
+#include "progress_bar.h"
+
 void selectionSortMin(unsigned size, int* arr){
-    for (unsigned i=0; i < size-1; i++){
+    for (int i=0; i < size-1; i++){
         int minindex = i;
-        for (unsigned j=i+1; j<size; j++){
+        for (int j=i+1; j<size; j++){
             if (arr[j] < arr[minindex]) minindex = j;
         }
 
@@ -10,5 +12,8 @@ void selectionSortMin(unsigned size, int* arr){
             arr[i] = arr[minindex];
             arr[minindex] = temp;
         }
+
+        //progress bar
+        progress_bar(size, i);
     }
 }

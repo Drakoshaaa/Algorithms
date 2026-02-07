@@ -19,6 +19,7 @@ const char Sarr[] = "assets/SortedArr.txt";
 #include "shakerSort.h"
 
 #include "randomizer.h"
+#include "progress_bar.h"
 
 unsigned Size_calc(ifstream*);
 void Arr_in(ifstream*, unsigned, int*);
@@ -113,31 +114,24 @@ int main() {
 
     switch (alg){
         case 1:
-        cout << "Идёт сортировка...\n";
         selectionSortMax(size, arr);
         break;
         case 2:
-        cout << "Идёт сортировка...\n";
         selectionSortMin(size, arr);
         break;
         case 3:
-        cout << "Идёт сортировка...\n";
         selectionSortMaxMin(size, arr);
         break;
         case 4:
-        cout << "Идёт сортировка...\n";
         insertionSort(size, arr);
         break;
         case 5:
-        cout << "Идёт сортировка...\n";
         bubbleSort(size, arr);
         break;
         case 6:
-        cout << "Идёт сортировка...\n";
         shakerSort(size, arr);
         break;
         case 7:
-        cout << "Идёт сортировка...\n";
         binaryInsertionSort(size, arr);
         break;
         case 8:
@@ -159,7 +153,7 @@ int main() {
     else {
         fileout.open(Sarr);
         printArr(&fileout, arr, size);
-        cout << "Сортировка завершена.\n";
+        cout << "\rСортировка завершена.       \n";
     }
 
     cout << "\n-------------------------------------------------------------------------\n";

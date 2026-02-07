@@ -1,3 +1,5 @@
+#include "progress_bar.h"
+
 void shakerSort(unsigned size, int* arr){
     int left = 0, right = size - 1; 
     bool swapped = true;
@@ -29,5 +31,8 @@ void shakerSort(unsigned size, int* arr){
         }
 
         left++;
+
+        //progress bar
+        progress_bar(size, left);
     }    
 }

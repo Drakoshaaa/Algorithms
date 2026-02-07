@@ -1,3 +1,5 @@
+#include "progress_bar.h"
+
 void selectionSortMaxMin(unsigned size, int* arr){
     int left = 0, right = size - 1;
 
@@ -5,7 +7,7 @@ void selectionSortMaxMin(unsigned size, int* arr){
         int minindex = left;
         int maxindex = right;
 
-        for (unsigned i = left; i <= right; i++){
+        for (int i = left; i <= right; i++){
             if (arr[i] < arr[minindex]) minindex = i;
             if (arr[i] > arr[maxindex]) maxindex = i;
         }
@@ -26,5 +28,8 @@ void selectionSortMaxMin(unsigned size, int* arr){
 
         left++;
         right--;
+
+        //progress bar
+        progress_bar(size, left);
     }
 }

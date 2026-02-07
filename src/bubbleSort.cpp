@@ -1,3 +1,5 @@
+#include "progress_bar.h"
+
 void bubbleSort(unsigned size, int* arr){
     for (int i = 0; i < size - 1; i++){
         bool swapped = false;
@@ -14,6 +16,9 @@ void bubbleSort(unsigned size, int* arr){
         if (!swapped){
             break;
         }
+
+        //progress bar
+        progress_bar(size, i);
     }
     
     return;
