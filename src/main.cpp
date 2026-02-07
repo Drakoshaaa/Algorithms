@@ -45,7 +45,7 @@ int main() {
     ofstream fileout;
     
     if (!filein.is_open()){
-        cout << "Ошибка: входной файл не открывается.\n";
+        cerr << "Ошибка: входной файл не открывается.\n";
         return 0;
     }
     
@@ -54,42 +54,40 @@ int main() {
     fmt::print(fg(fmt::color::orange_red) ,"                SORT\n");
     fmt::print(fg(fmt::color::orange_red) ,"     ---------------------------\n");
     
-
-    cout << "     1.  Selection sort Max\n"
-    << "     2.  Selection sort Min\n"
-    << "     3.  Selection sort Min Max\n"
-    << "     4.  Insertion sort\n"
-    << "     5.  Bubble sort\n"
-    << "     6.  Shaker sort\n"
-    << "     7.  Binary Insertion sort\n\n";
+    fmt::print("     1.  Selection sort Max\n");
+    fmt::print("     2.  Selection sort Min\n");
+    fmt::print("     3.  Selection sort Min Max\n");
+    fmt::print("     4.  Insertion sort\n");
+    fmt::print("     5.  Bubble sort\n");
+    fmt::print("     6.  Shaker sort\n");
+    fmt::print("     7.  Binary Insertion sort\n\n");
 
     fmt::print(fg(fmt::color::orange_red) ,"                SEARCH\n");
     fmt::print(fg(fmt::color::orange_red) ,"     ---------------------------\n");
 
-    cout << "     8.  Linear search\n"
-    << "     9.  Binary search (Нужен отсортированный массив)\n\n";
+    fmt::print("     8.  Linear search\n");
+    fmt::print("     9.  Binary search (Нужен отсортированный массив)\n\n");
 
-    
-    cout << "Введите номер алгоритма: ";
+    fmt::print("Введите номер алгоритма: ");
     cin >> alg;
-    cout << endl << endl;
+    fmt::print("\n\n");
     
     for (int i=0; (i <= 5) && (alg < 1 || alg > 9) ; i++){
         if (i == 5){
-            cout << "Бля ты чё даун";
+            cerr << "Бля ты чё даун";
             return 0;
         }
         if (alg < 1 || alg > 9){
-            cout << "Ошибка: Алгоритма под таким номером не существует\n";
-            cout << "Введите номер алгоритма: ";
-            cin >> alg; cout << endl << endl;
+            cerr << "Ошибка: Алгоритма под таким номером не существует\n";
+            cerr << "Введите номер алгоритма: ";
+            cin >> alg; cerr << endl << endl;
         }
     }
     
     if (alg > 7){
-        cout << "Введите значение для поиска: ";
+        fmt::print("Введите значение для поиска: ");
         cin >> target;
-        cout << endl << endl;
+        fmt::print("\n\n");
     }
 
     
@@ -97,7 +95,7 @@ int main() {
     unsigned size = Size_calc(&filein);
     filein.clear();
     filein.seekg(0);
-    cout << "Размер массива: " << size << endl;
+    fmt::print("Размер массива: {} \n", size);
     
     //Динамическое выделение памяти под массив чисел
     int* arr = new int[size];
@@ -153,18 +151,18 @@ int main() {
     // Заверешающий вывод работы программы
     if (alg > 7){
         if (result != -1){
-            cout << "Элемент (" << target << ") найден под индексом " << result << ".\n";
+            fmt::print("Элемент ({0}) найден под индексом {1}.\n", target, result);
         } else {
-            cout << "Элемент (" << target << ") не найден." << endl;
+            fmt::print("Элемент ({}) не найден.\n", target);
         }
     }
     else {
         fileout.open(Sarr);
         printArr(&fileout, arr, size);
-        cout << "\rСортировка была завершена за " << diff.count() << " секунд\n";
+        fmt::print("\rСортировка была завершена за {:.3f} секунд\n", diff.count());
     }
 
-    cout << "\n-------------------------------------------------------------------------\n";
+    fmt::print("\n-------------------------------------------------------------------------\n");
     fileout.close();
     delete[] arr;
     return 0;
