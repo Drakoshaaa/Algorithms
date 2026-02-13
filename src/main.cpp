@@ -9,16 +9,8 @@ using namespace std;
 const char USarr[] = "assets/UnsortedArr.txt"; 
 const char Sarr[] = "assets/SortedArr.txt"; 
 
-#include "binaryInsertionSort.h"
-#include "binarySearch.h"
-#include "bubbleSort.h"
-#include "insertionSort.h"
-#include "linearSearch.h"
-#include "selectionSortMax.h"
-#include "selectionSortMaxMin.h"
-#include "selectionSortMin.h"
-#include "shakerSort.h"
-
+#include "sortAlgos.h"
+#include "searchAlgos.h"
 #include "randomizer.h"
 
 unsigned Size_calc(ifstream*);
