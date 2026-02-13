@@ -1,1 +1,0 @@
-int binarySearch(unsigned size, int* arr, int target);

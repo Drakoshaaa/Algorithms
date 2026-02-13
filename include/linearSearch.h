@@ -1,1 +1,0 @@
-int linearSearch(unsigned size, int* arr, int target);

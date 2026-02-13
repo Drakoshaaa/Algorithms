@@ -1,1 +1,0 @@
-void selectionSortMaxMin(unsigned size, int* arr);

@@ -1,1 +1,0 @@
-void insertionSort(unsigned size, int* arr);
