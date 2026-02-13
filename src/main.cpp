@@ -116,20 +116,19 @@ int main() {
     fmt::print("Введите номер алгоритма: ");
     cin >> alg;
     fmt::print("\n\n");
+
+    alg -= 1;
     
-    for (int i=0; (i <= 5) && (alg < 1 || alg > std::size(algos)) ; i++){
-        if (i == 5){
+    for (int i = 0; i <= 5 && !(0 < alg && alg < std::size(algos)); i++){
+        if (i == 5) {
             cerr << "Бля ты чё даун";
             return 0;
         }
-        if (alg < 1 || alg > 9){
-            cerr << "Ошибка: Алгоритма под таким номером не существует\n";
-            cerr << "Введите номер алгоритма: ";
-            cin >> alg; cerr << endl << endl;
-        }
+        cerr << "Ошибка: Алгоритма под таким номером не существует\n";
+        cerr << "Введите номер алгоритма: ";
+        cin >> alg; cerr << endl << endl;
+        alg -= 1;
     }
-    
-    alg -= 1;
 
     if (algos[alg].kind == ALGO_SEARCH){
         fmt::print("Введите значение для поиска: ");
@@ -146,11 +145,12 @@ int main() {
     //Динамическое выделение памяти под массив чисел
     arr = new int[size];
     
-    if (alg == 9){
-        Arr_in(&filein_bs, size, arr);
-    } 
-    else {
-        Arr_in(&filein, size, arr);
+    if (algos[alg].kind == ALGO_SEARCH) {
+        algo_search_fn fn = algos[alg].search;
+        ifstream *file;
+        if (fn == binarySearch) file = &filein_bs;
+        else if (fn == linearSearch) file = &filein;
+        Arr_in(file, size, arr);
     }
     
     filein.close();
